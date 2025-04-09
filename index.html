@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magic 8-Ball</title>
+
+    <style>
+        body {
+            background-color: #353535;
+        }
+        h1 {
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold;
+            font-size: 40px; /* Reduced by 20% */
+            color: #71c6ff;
+        }
+        
+        h2 {
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 24px; /* Reduced by 20% */
+            color: #71c6ff;
+        }
+
+        .circle {
+            width: 480px; /* Reduced by 20% */
+            height: 480px; /* Reduced by 20% */
+            background-color: black;
+            border-radius: 50%;
+            position: relative;
+            margin: 0 auto;
+            box-shadow: 0 0 16px rgba(0, 0, 0, 0.5);
+
+            background: radial-gradient(circle at top left, #333, #000);
+            box-shadow: inset -4px -4px 12px rgba(0, 0, 0, 0.5), 0 4px 16px rgba(0, 0, 0, 0.6);
+            border-radius: 50%;
+        }
+
+        .triangle {
+            position: absolute;
+            top: 360px; /* Increased by 20% */
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 0; 
+            height: 0; 
+            border-left: 96px solid transparent; /* Increased by 20% */
+            border-right: 96px solid transparent; /* Increased by 20% */
+            border-bottom: 192px solid #71c6ff; /* Increased by 20% */
+        }
+        
+        .answer {
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 20px; /* Reduced by 20% */
+            color: rgb(0, 0, 0);
+            position: absolute;
+            top: 400px; /* Reduced by 20% */
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 96px; /* Reduced by 20% */
+            max-height: 96px; /* Reduced by 20% */
+            word-wrap: break-word;
+            line-height: 24px; /* Reduced by 20% */
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-bottom: 10px;
+        }
+        .question {
+            width: 56%; /* Reduced by 20% */
+            height: 56px; /* Reduced by 20% */
+            font-size: 40px; /* Reduced by 20% */
+            text-align: center;
+            margin: 16px auto; /* Reduced by 20% */
+            display: block;
+            border: 2.4px solid black; /* Reduced by 20% */
+            border-radius: 8px; /* Reduced by 20% */
+        }
+
+        .ask {
+            margin: 0 auto;
+            display: block;
+            background-color: black;
+            text-align: center;
+            width: 32%; /* Reduced by 20% */
+            border-radius: 8px; /* Reduced by 20% */
+            font-size: 32px; /* Reduced by 20% */
+            color: #71c6ff;
+        }      
+        
+        img {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            width: 150px;
+            height: auto;
+            display: flex;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Magic 8-Ball</h1>
+    <h2>Ask a question and see your fortune!</h2>
+    <div class="circle"></div>
+    <div class="triangle"></div>
+    <p class="answer">Yes.</p>
+    <input class="question" placeholder="Ask your question here..."/>
+    <button class="ask" onclick="shakeBall()">Ask the Magic 8-Ball</button>
+
+    <img src="https://yhstudios.github.io/image1.png">
+
+        
+    <script>
+        function shakeBall() {
+            const answers = [
+                "Yes.", "No.", "Maybe.", "Ask again later.", "Definitely.", 
+                "Absolutely not.", "It is certain.", "Very doubtful.", 
+                "Without a doubt.", "Concentrate and ask again.", 
+                "Outlook good.", "Outlook not so good.", "Signs point to yes.", 
+                "Don't count on it.", "Yes, in due time.", "My sources say no.", 
+                "You may rely on it.", "Cannot predict now.", 
+                "Better not tell you now.", "Most likely."
+            ];
+            const answerElement = document.querySelector('.answer');
+            let index = 0;
+            const interval = setInterval(() => {
+                answerElement.textContent = answers[index];
+                index = (index + 1) % answers.length;
+            }, 20);
+
+            setTimeout(() => {
+                clearInterval(interval);
+                const randomAnswer = answers[Math.floor(Math.random() * answers.length)];
+                answerElement.textContent = randomAnswer;
+            }, 2000); // 4 seconds of cycling through answers
+        }
+    </script>   
+    
+</body>
+</html>
