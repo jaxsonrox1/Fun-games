@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drawing Pad</title>
+    <style>
+         body {
+            background-color: #353535;
+        }
+
+        h1 {
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold;
+            font-size: 40px; /* Reduced by 20% */
+            color: #71c6ff;
+        }
+        
+        h2 {
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 24px; /* Reduced by 20% */
+            color: #71c6ff;
+        }
+
+        button {
+            width: 30%;
+            height: 100px;
+            border-radius: 50px;
+            border: 2px #71c6ff solid;
+            font-size: 70px;
+            background-color: #181818;
+            color: #71c6ff;
+            margin: 0 auto;
+            display: block;
+            margin-top: 150px;
+        }
+
+        p {
+            font-size: 150px;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: 900;
+            text-align: center;
+            color: #71c6ff;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Welcome to the Clicking Game!</h1>
+    <h2>Lets see how many times you can click the button!</h2>
+    <button id="button">Click me</button>
+    <p id="number">0</p>
+
+    <script>
+
+        if (localStorage.getItem("clickerCounter")) {
+            const counter = document.getElementById("number")
+            number = Number(localStorage.getItem("clickerCounter"))
+            counter.innerHTML = number
+        } else {
+            localStorage.setItem("clickerCounter", 0)
+        }
+
+        const button = document.getElementById("button")
+        const counter = document.getElementById("number")
+        button.addEventListener('click', () => {
+            number = Number(localStorage.getItem("clickerCounter"))
+            
+            number = 1 + number
+            
+            counter.innerHTML = number
+            localStorage.setItem("clickerCounter",number)
+        });
+        
+    </script>
+</body>
+
+</html>
